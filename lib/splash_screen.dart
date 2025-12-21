@@ -17,14 +17,12 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    // Animate name
     Future.delayed(const Duration(milliseconds: 600), () {
       setState(() {
         showName = true;
       });
     });
 
-    // Navigate to home page
     Future.delayed(const Duration(seconds: 11), () {
       Navigator.pushReplacement(
         context,
@@ -39,7 +37,6 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          // NAME ANIMATION
           Center(
             child: AnimatedSlide(
               offset: showName ? Offset.zero : const Offset(0, 0.3),
@@ -61,7 +58,6 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
 
-          // WALKING 3D CHARACTER
           Positioned(
             bottom: 0,
             left: 0,
@@ -69,10 +65,11 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 380,
               width: 380,
               child: ModelViewer(
-                src: 'assets/pushandforward.glb',
-                animationName: 'Armature|Push_Forward_and_Stop|baselayer',
+                src: 'assets/walking.glb',
+                animationName: 'walking_man',
+                autoPlay: true,
 
-                autoRotate: false,
+                autoRotate: true,
                 cameraControls: false,
                 backgroundColor: Colors.transparent,
               ),
