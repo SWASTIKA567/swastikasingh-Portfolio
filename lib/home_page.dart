@@ -14,6 +14,7 @@ class _HomePageState extends State<HomePage> {
   final aboutKey = GlobalKey();
   final projectsKey = GlobalKey();
   final contactKey = GlobalKey();
+  bool animateButtons = false;
 
   void scrollTo(GlobalKey key) {
     Scrollable.ensureVisible(
@@ -33,7 +34,6 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            /// 🔹 HOME / HERO SECTION (WITH BACKGROUND)
             Container(
               key: homeKey,
               height: height,
@@ -48,51 +48,87 @@ class _HomePageState extends State<HomePage> {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: Column(
+              child: Stack(
                 children: [
-                  const SizedBox(height: 24),
+                  Positioned(
+                    left: isMobile ? 20 : width * 0.15,
+                    bottom: isMobile ? 10 : 20,
+                    child: AnimatedSlide(
+                      offset: animateButtons
+                          ? Offset.zero
+                          : const Offset(-1.5, 0),
+                      duration: const Duration(milliseconds: 850),
+                      curve: Curves.easeOutCubic,
+                      child: NavButton(
+                        text: 'Home',
+                        onTap: () => scrollTo(homeKey),
+                      ),
+                    ),
+                  ),
 
-                  // NAVBAR
-                  Wrap(
-                    alignment: WrapAlignment.center,
-                    spacing: 16,
-                    runSpacing: 12,
-                    children: [
-                      NavButton(text: 'Home', onTap: () => scrollTo(homeKey)),
-                      NavButton(text: 'About', onTap: () => scrollTo(aboutKey)),
-                      NavButton(
+                  Positioned(
+                    left: isMobile ? 20 : width * 0.35,
+                    bottom: isMobile ? 10 : 20,
+                    child: AnimatedSlide(
+                      offset: animateButtons
+                          ? Offset.zero
+                          : const Offset(-1.5, 0),
+                      duration: const Duration(milliseconds: 850),
+                      curve: Curves.easeOutCubic,
+                      child: NavButton(
+                        text: 'About',
+                        onTap: () => scrollTo(aboutKey),
+                      ),
+                    ),
+                  ),
+
+                  Positioned(
+                    left: isMobile ? 20 : width * 0.65,
+                    bottom: isMobile ? 10 : 20,
+                    child: AnimatedSlide(
+                      offset: animateButtons
+                          ? Offset.zero
+                          : const Offset(1.5, 0),
+                      duration: const Duration(milliseconds: 850),
+                      curve: Curves.easeOutCubic,
+                      child: NavButton(
                         text: 'Projects',
                         onTap: () => scrollTo(projectsKey),
                       ),
-                      NavButton(
+                    ),
+                  ),
+
+                  Positioned(
+                    left: isMobile ? 20 : width * 0.85,
+                    bottom: isMobile ? 10 : 20,
+                    child: AnimatedSlide(
+                      offset: animateButtons
+                          ? Offset.zero
+                          : const Offset(1.5, 0),
+                      duration: const Duration(milliseconds: 1000),
+                      curve: Curves.easeOutCubic,
+                      child: NavButton(
                         text: 'Contact',
                         onTap: () => scrollTo(contactKey),
                       ),
-                    ],
+                    ),
                   ),
-
-                  const Spacer(),
-
-                  const Spacer(),
                 ],
               ),
             ),
 
-            /// 🔹 ABOUT SECTION (NO BG IMAGE)
             WebsiteSection(
               key: aboutKey,
               title: 'ABOUT ME',
               bgColor: Colors.black,
             ),
 
-            /// 🔹 PROJECTS SECTION
             WebsiteSection(
               key: projectsKey,
               title: 'PROJECTS',
               bgColor: Colors.grey,
             ),
 
-            /// 🔹 CONTACT SECTION
             WebsiteSection(
               key: contactKey,
               title: 'CONTACT ME',

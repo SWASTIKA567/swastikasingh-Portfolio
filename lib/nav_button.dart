@@ -15,26 +15,41 @@ class _NavButtonState extends State<NavButton> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final double fontSize = width < 600
+        ? 14
+        : width < 1100
+        ? 16
+        : 18;
+
     return MouseRegion(
       onEnter: (_) => setState(() => isHovering = true),
       onExit: (_) => setState(() => isHovering = false),
-      child: AnimatedScale(
-        scale: isHovering ? 1.15 : 1.0,
-        duration: const Duration(milliseconds: 200),
-        child: GestureDetector(
-          onTap: widget.onTap,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.pink, width: 2),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Text(
-              widget.text,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 250),
+          transform: Matrix4.translationValues(0, isHovering ? 6 : 0, 0),
+          child: AnimatedScale(
+            scale: isHovering ? 1.15 : 1.0,
+            duration: const Duration(milliseconds: 200),
+            child: GestureDetector(
+              onTap: widget.onTap,
+              child: Text(
+                widget.text,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: fontSize,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 1.2,
+
+                  shadows: isHovering
+                      ? [
+                          const Shadow(color: Colors.white, blurRadius: 12),
+                          const Shadow(color: Colors.white, blurRadius: 24),
+                        ]
+                      : [],
+                ),
               ),
             ),
           ),

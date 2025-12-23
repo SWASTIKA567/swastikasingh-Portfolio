@@ -8,11 +8,14 @@ class WebsiteSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final screenHeight = size.height;
 
     return Container(
       width: double.infinity,
-      constraints: const BoxConstraints(minHeight: 600),
+      constraints: BoxConstraints(minHeight: screenHeight),
+
       color: bgColor,
       padding: EdgeInsets.symmetric(
         horizontal: width < 600 ? 20 : 80,
