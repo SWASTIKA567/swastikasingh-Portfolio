@@ -70,8 +70,10 @@ class _HomePageState extends State<HomePage> {
                       child: Stack(
                         children: [
                           Positioned(
-                            left: isMobile ? 20 : width * 0.163,
-                            top: isMobile ? height * 0.07 : height * 0.038,
+                            left: (isMobile ? 20 : width * 0.163) - 14,
+                            top:
+                                (isMobile ? height * 0.07 : height * 0.038) -
+                                10,
                             child: Text(
                               'Portfolio.',
                               style: TextStyle(
@@ -88,8 +90,61 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                           ),
+                          Positioned(
+                            left: (isMobile ? 20 : width * 0.18) - 90,
+                            top:
+                                (isMobile ? height * 0.07 : height * 0.038) +
+                                60,
+                            child: Text(
+                              'MY',
+                              style: TextStyle(
+                                fontFamily: 'rage',
+                                fontWeight: FontWeight.w400,
+                                fontSize: isMobile
+                                    ? (width * 0.18).clamp(60.0, 90.0)
+                                    : (width * 0.18).clamp(120.0, 200.0),
+                                height: 1.0,
+                                letterSpacing: isMobile
+                                    ? (width * 0.18 * -0.03).clamp(-3.0, -2.0)
+                                    : (width * 0.18 * -0.03).clamp(-6.0, -4.0),
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            left: (isMobile ? 22 : width * 0.18) + 90,
+                            top:
+                                (isMobile ? height * 0.25 : height * 0.22) -
+                                130,
+                            child: Text(
+                              'APP DEVELOPER',
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w700,
+
+                                fontSize: isMobile
+                                    ? (width * 0.045).clamp(14.0, 18.0)
+                                    : (width * 0.028).clamp(22.0, 32.0),
+                                letterSpacing: isMobile
+                                    ? (width * 0.045 * -0.07).clamp(-1.5, -0.8)
+                                    : (width * 0.028 * -0.07).clamp(-3.0, -1.6),
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
+                    ),
+                  ),
+                  Positioned(
+                    left: (isMobile ? width * 0.55 : width * 0.45),
+                    top: (isMobile ? height * 0.12 : height * 0.05),
+                    child: Image.asset(
+                      'assets/image.png',
+                      width: isMobile
+                          ? (width * 0.35).clamp(120.0, 200.0)
+                          : (width * 0.25).clamp(220.0, 380.0),
+                      fit: BoxFit.contain,
                     ),
                   ),
 

@@ -65,11 +65,15 @@ flutter:
       fonts:
         - asset: assets/fonts/Poppins-Bold.ttf
         - asset: assets/fonts/Poppins-Regular.ttf
+    - family: rage
+      fonts:
+        - asset: assets/fonts/rage.ttf
   assets:
     - assets/walking.glb
     - assets/pushandforward.glb
     
     - assets/web.jpeg
+    - assets/image.png
     
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
