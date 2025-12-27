@@ -68,6 +68,16 @@ flutter:
     - family: rage
       fonts:
         - asset: assets/fonts/rage.ttf
+        
+    - family: QwitcherGrypen
+      fonts:
+        - asset: assets/fonts/QwitcherGrypen-Bold.ttf
+
+    - family: PlayfairDisplay
+      fonts:
+        - asset: assets/fonts/PlayfairDisplay-Bold.ttf
+
+          
   assets:
     - assets/walking.glb
     - assets/pushandforward.glb

@@ -91,10 +91,10 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Positioned(
-                            left: (isMobile ? 20 : width * 0.18) - 90,
+                            left: (isMobile ? 20 : width * 0.18) - 150,
                             top:
                                 (isMobile ? height * 0.07 : height * 0.038) +
-                                60,
+                                100,
                             child: Text(
                               'MY',
                               style: TextStyle(
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                                 letterSpacing: isMobile
                                     ? (width * 0.18 * -0.03).clamp(-3.0, -2.0)
                                     : (width * 0.18 * -0.03).clamp(-6.0, -4.0),
-                                color: Colors.white,
+                                color: Color(0xFFDFE1E2),
                               ),
                             ),
                           ),
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                             child: Text(
                               'APP DEVELOPER',
                               style: TextStyle(
-                                fontFamily: 'Poppins',
+                                fontFamily: 'PlayfairDisplay',
                                 fontWeight: FontWeight.w700,
 
                                 fontSize: isMobile
@@ -132,19 +132,55 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                           ),
+                          Align(
+                            alignment: const Alignment(0, 1.5),
+                            child: Image.asset(
+                              'assets/image.png',
+                              width: isMobile
+                                  ? (width * 0.75).clamp(260.0, 360.0)
+                                  : (width * 0.35).clamp(520.0, 820.0),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+
+                          Align(
+                            alignment: Alignment(0, 0.8),
+                            child: Transform.rotate(
+                              angle: -0.098,
+                              child: Text(
+                                'Swastika Singh',
+                                style: TextStyle(
+                                  fontFamily: 'QwitcherGrypen',
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: isMobile
+                                      ? (width * 0.12).clamp(40.0, 70.0)
+                                      : (width * 0.10).clamp(80.0, 140.0),
+                                  letterSpacing: isMobile
+                                      ? (width * 0.12 * 0.05).clamp(2.0, 4.0)
+                                      : (width * 0.10 * 0.05).clamp(4.0, 7.0),
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
                   ),
+
                   Positioned(
-                    left: (isMobile ? width * 0.55 : width * 0.45),
-                    top: (isMobile ? height * 0.12 : height * 0.05),
-                    child: Image.asset(
-                      'assets/image.png',
-                      width: isMobile
-                          ? (width * 0.35).clamp(120.0, 200.0)
-                          : (width * 0.25).clamp(220.0, 380.0),
-                      fit: BoxFit.contain,
+                    left: isMobile ? 20 : width * 0.15,
+                    bottom: isMobile ? 10 : 20,
+                    child: AnimatedSlide(
+                      offset: animateButtons
+                          ? Offset.zero
+                          : const Offset(-1.5, 0),
+                      duration: const Duration(seconds: 9),
+                      curve: Curves.easeOutCubic,
+                      child: NavButton(
+                        text: 'Home',
+                        onTap: () => scrollTo(aboutKey),
+                      ),
                     ),
                   ),
 
