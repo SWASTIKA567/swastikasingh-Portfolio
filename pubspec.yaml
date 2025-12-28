@@ -76,13 +76,22 @@ flutter:
     - family: PlayfairDisplay
       fonts:
         - asset: assets/fonts/PlayfairDisplay-Bold.ttf
+        
+
+    - family: InriaSans
+      fonts:
+        
+        
+        - asset: assets/fonts/InriaSans-Light.ttf
+        
+
 
           
   assets:
     - assets/walking.glb
     - assets/pushandforward.glb
     
-    - assets/web.jpeg
+    - assets/web.jpg
     - assets/image.png
     
   #   - images/a_dot_burr.jpeg

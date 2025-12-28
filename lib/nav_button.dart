@@ -33,16 +33,17 @@ class _NavButtonState extends State<NavButton> {
           child: AnimatedScale(
             scale: isHovering ? 1.15 : 1.0,
             duration: const Duration(milliseconds: 200),
+
             child: GestureDetector(
               onTap: widget.onTap,
               child: Text(
                 widget.text,
                 style: TextStyle(
-                  color: Colors.white,
                   fontSize: fontSize,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 1.2,
-
+                  fontFamily: 'InriaSans',
+                  fontWeight: FontWeight.w300,
+                  letterSpacing: fontSize * -0.03,
+                  color: const Color(0xFFB5B5B5),
                   shadows: isHovering
                       ? [
                           const Shadow(color: Colors.white, blurRadius: 12),

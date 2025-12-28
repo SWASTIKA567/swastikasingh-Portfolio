@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/website_section.dart';
+import 'about_section.dart';
+import 'project_section.dart';
+import 'contact_section.dart';
+
 import 'nav_button.dart';
 
 class HomePage extends StatefulWidget {
@@ -54,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                   image: AssetImage(
                     isMobile
                         ? 'assets/backgrounds/bg_mobile.png'
-                        : 'assets/web.jpeg',
+                        : 'assets/web.jpg',
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -115,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                             left: (isMobile ? 22 : width * 0.18) + 90,
                             top:
                                 (isMobile ? height * 0.25 : height * 0.22) -
-                                130,
+                                150,
                             child: Text(
                               'APP DEVELOPER',
                               style: TextStyle(
@@ -123,11 +126,12 @@ class _HomePageState extends State<HomePage> {
                                 fontWeight: FontWeight.w700,
 
                                 fontSize: isMobile
-                                    ? (width * 0.045).clamp(14.0, 18.0)
-                                    : (width * 0.028).clamp(22.0, 32.0),
+                                    ? (width * 0.048).clamp(17.0, 23.0)
+                                    : (width * 0.030).clamp(30.0, 48.0),
+
                                 letterSpacing: isMobile
-                                    ? (width * 0.045 * -0.07).clamp(-1.5, -0.8)
-                                    : (width * 0.028 * -0.07).clamp(-3.0, -1.6),
+                                    ? (width * 0.045 * -0.08).clamp(-1.5, -0.8)
+                                    : (width * 0.028 * -0.08).clamp(-5.0, -3.0),
                                 color: Colors.white,
                               ),
                             ),
@@ -145,20 +149,25 @@ class _HomePageState extends State<HomePage> {
 
                           Align(
                             alignment: Alignment(0, 0.8),
-                            child: Transform.rotate(
-                              angle: -0.098,
-                              child: Text(
-                                'Swastika Singh',
-                                style: TextStyle(
-                                  fontFamily: 'QwitcherGrypen',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: isMobile
-                                      ? (width * 0.12).clamp(40.0, 70.0)
-                                      : (width * 0.10).clamp(80.0, 140.0),
-                                  letterSpacing: isMobile
-                                      ? (width * 0.12 * 0.05).clamp(2.0, 4.0)
-                                      : (width * 0.10 * 0.05).clamp(4.0, 7.0),
-                                  color: Colors.white,
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                left: isMobile ? width * 0.02 : width * 0.04,
+                              ),
+                              child: Transform.rotate(
+                                angle: -0.098,
+                                child: Text(
+                                  'Swastika Singh',
+                                  style: TextStyle(
+                                    fontFamily: 'QwitcherGrypen',
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: isMobile
+                                        ? (width * 0.12).clamp(40.0, 70.0)
+                                        : (width * 0.12).clamp(80.0, 140.0),
+                                    letterSpacing: isMobile
+                                        ? (width * 0.12 * 0.05).clamp(2.0, 4.0)
+                                        : (width * 0.10 * 0.05).clamp(4.0, 7.0),
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
@@ -179,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                       curve: Curves.easeOutCubic,
                       child: NavButton(
                         text: 'Home',
-                        onTap: () => scrollTo(aboutKey),
+                        onTap: () => scrollTo(homeKey),
                       ),
                     ),
                   ),
@@ -235,23 +244,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            WebsiteSection(
-              key: aboutKey,
-              title: 'ABOUT ME',
-              bgColor: Colors.black,
-            ),
-
-            WebsiteSection(
-              key: projectsKey,
-              title: 'PROJECTS',
-              bgColor: Colors.grey,
-            ),
-
-            WebsiteSection(
-              key: contactKey,
-              title: 'CONTACT ME',
-              bgColor: Colors.black87,
-            ),
+            AboutSection(key: aboutKey),
+            ProjectsSection(key: projectsKey),
+            ContactSection(key: contactKey),
           ],
         ),
       ),
